@@ -43,6 +43,22 @@ const postJuego = async (req, res, next) => {
   }
 };
 
+//! PUT - Modificar un juego por id:
+const putJuego = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const newJuego = new Juego(req.body);
+    newJuego._id = id;
+    const juegoUpdated = await Juego.findByIdAndUpdate(id, newJuego, {
+      new: true,
+    });
+    return res.status(200).json(juegoUpdated);
+  } catch (error) {
+    return res.status(400).json("Error en la solicitud");
+  }
+};
+
+
 //! DELETE - Eliminar un juego por id:
 const deleteJuego = async (req, res, next) => {
   try {
@@ -54,4 +70,4 @@ const deleteJuego = async (req, res, next) => {
   }
 };
 
-module.exports = { getJuegos, getJuegoById, getJuegosByCategory, postJuego, deleteJuego };
+module.exports = { getJuegos, getJuegoById, getJuegosByCategory, postJuego, putJuego, deleteJuego };

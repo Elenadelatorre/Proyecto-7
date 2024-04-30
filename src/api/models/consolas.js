@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const consolaSchema= new mongoose.Schema({
   nombre: { type: String, required: true },
-  imagen: { type: String, required: true },
+  imagenUrl: { type: String, required: true },
   lanzamiento: { type: Date, required: true },
   fabricante: { type: String, required: true },
   juegos: [{ type: mongoose.Types.ObjectId, ref: 'juegos', required: false }]
