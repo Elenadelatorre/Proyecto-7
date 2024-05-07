@@ -11,7 +11,7 @@ const register = async (req, res, next) => {
       contraseña: req.body.contraseña,
       añoNacimiento: req.body.añoNacimiento,
       imagenPerfil: req.body.imagenPerfil,
-      rol: req.body.rol
+      rol: "User"
     });
 
     const userDuplicated = await User.findOne({ email: req.body.email });
